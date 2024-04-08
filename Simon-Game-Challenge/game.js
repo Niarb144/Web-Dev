@@ -7,11 +7,6 @@ function nextSequence(){
     let randomChosenColor = buttonColors[randomNumber];
 
     gamePattern.push(randomChosenColor);
-
-    // let yellowButton = $("#yellow");
-    // if(randomChosenColor === yellowButton){
-    //     console.log(yellowButton);
-    // }
        
     return  randomChosenColor;
 }
@@ -25,19 +20,17 @@ function buttonAnimation(button){
 $(".btn").on("click", function(event){
     var index = $(".btn").index(this);
     var buttonType = $(".btn")[index].id;
-    console.log(buttonType + " button clicked whose index number is " + index);
-    let key = this.buttonType;
-   
+    console.log(buttonType + " button clicked whose index number is " + index);  
 
-    makeSound(key);
+    makeSound(buttonType);
     buttonAnimation(buttonType);
 
     
 });
 
 // sound
-function makeSound(key){
-    switch(key){
+function makeSound(buttonType){
+    switch(buttonType){
         case "green" :
             var green = new Audio('./sounds/green.mp3');
             green.play();
