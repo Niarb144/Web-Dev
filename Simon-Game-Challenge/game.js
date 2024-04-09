@@ -1,6 +1,6 @@
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
-
+let userClickedPattern = [];
 
 function nextSequence(){
     let  randomNumber = Math.floor(Math.random()*4);
@@ -11,21 +11,27 @@ function nextSequence(){
     return  randomChosenColor;
 }
 
+// Button Animation
 function buttonAnimation(button){
     $("#"+button).animate({
         opacity: 0.5
     });
+    $("#"+button).animate({
+        opacity: 1.0 
+    });
 }
 
-$(".btn").on("click", function(event){
+// Button click event
+$(".btn").on("click", function(){
     var index = $(".btn").index(this);
     var buttonType = $(".btn")[index].id;
     console.log(buttonType + " button clicked whose index number is " + index);  
 
-    makeSound(buttonType);
-    buttonAnimation(buttonType);
+    userClickedPattern.push(buttonType);
+    console.log(userClickedPattern);
 
-    
+    makeSound(buttonType);
+    buttonAnimation(buttonType);    
 });
 
 // sound
