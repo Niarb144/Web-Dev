@@ -7,8 +7,9 @@ function nextSequence(){
     let randomChosenColor = buttonColors[randomNumber];
 
     gamePattern.push(randomChosenColor);
-       
-    return  randomChosenColor;
+    makeSound(randomChosenColor);
+    
+    console.log(randomChosenColor);
 }
 
 // Button Animation
@@ -35,37 +36,12 @@ $(".btn").on("click", function(){
 });
 
 // sound
-function makeSound(buttonType){
-    switch(buttonType){
-        case "green" :
-            var green = new Audio('./sounds/green.mp3');
-            green.play();
-            break;
-        case "red" :
-            var red = new Audio('./sounds/red.mp3');
-            red.play(); 
-            break;
-
-        case "yellow" :
-            var yellow = new Audio('./sounds/yellow.mp3');
-            yellow.play(); 
-            break;
-
-        case "blue" :
-            var blue = new Audio('./sounds/blue.mp3');
-            blue.play();
-            break;
-
-        default : 
-            var wrong = new Audio('./sounds/wrong.mp3');
-            wrong.play();
-            break;
-    }
+function makeSound(sound){
+    var audio = new Audio("./sounds/" + sound + ".mp3");
+    audio.play();
 }
 
-
-
-console.log(nextSequence());
+nextSequence();
 console.log(gamePattern);
 
 
