@@ -37,7 +37,8 @@ function buttonAnimation(button){
 $(".btn").on("click", function(){
     var index = $(".btn").index(this);
     var buttonType = $(".btn")[index].id;
-    console.log(buttonType + " button clicked whose index number is " + index);  
+    console.log(buttonType + " button clicked whose index number is " + index); 
+    checkAnswer(buttonType); 
 
     userClickedPattern.push(buttonType);
     console.log(userClickedPattern);
@@ -50,6 +51,15 @@ $(".btn").on("click", function(){
 function makeSound(sound){
     var audio = new Audio("./sounds/" + sound + ".mp3");
     audio.play();
+}
+
+function checkAnswer(currentLevel){
+    if (currentLevel === gamePattern[0]){
+        alert("Success");
+    }
+    else{
+        alert(" Wrong");
+    }
 }
 
 console.log(gamePattern);
