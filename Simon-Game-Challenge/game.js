@@ -9,12 +9,14 @@ $(document).one("keypress", function(event){
 });
 
 function nextSequence(){
-    $("#level-title").text("Level " + (level++));
+    level++;
+    $("#level-title").text("Level " + (level));
     let  randomNumber = Math.floor(Math.random()*4);
     let randomChosenColor = buttonColors[randomNumber];
 
     gamePattern.push(randomChosenColor);
     makeSound(randomChosenColor);
+    buttonAnimation(randomChosenColor);
     
     console.log(randomChosenColor);
 }
