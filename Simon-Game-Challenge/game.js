@@ -19,6 +19,7 @@ function nextSequence(){
     buttonAnimation(randomChosenColor);
     
     console.log(randomChosenColor);
+    setInterval(nextSequence, 1000);
 }
 
 // Button Animation
@@ -54,8 +55,9 @@ function makeSound(sound){
 }
 
 function checkAnswer(currentLevel){
-    if (currentLevel === gamePattern[0]){
+    if (currentLevel == gamePattern){
         alert("Success");
+        console.log("The two values are " + currentLevel + " " + gamePattern);
     }
     else{
         alert(" Wrong");
