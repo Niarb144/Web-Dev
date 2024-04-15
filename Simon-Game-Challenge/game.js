@@ -1,8 +1,15 @@
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
+let level = 0;
+
+$(document).one("keypress", function(event){
+    console.log("Key has been pressed to start the game");
+    nextSequence();
+});
 
 function nextSequence(){
+    $("#level-title").text("Level " + (level++));
     let  randomNumber = Math.floor(Math.random()*4);
     let randomChosenColor = buttonColors[randomNumber];
 
@@ -17,9 +24,11 @@ function buttonAnimation(button){
     $("#"+button).animate({
         opacity: 0.5
     });
+
     $("#"+button).animate({
         opacity: 1.0 
-    });
+    });   
+    
 }
 
 // Button click event
@@ -41,7 +50,6 @@ function makeSound(sound){
     audio.play();
 }
 
-nextSequence();
 console.log(gamePattern);
 
 
