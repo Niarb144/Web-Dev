@@ -62,8 +62,7 @@ function checkAnswer(currentLevel){
         console.log("The two values are " + gamePattern + " " + userClickedPattern);
 
         if (userClickedPattern.length === gamePattern.length){
-
-            //5. Call nextSequence() after a 1000 millisecond delay.
+            // Call nextSequence() after a 1000 millisecond delay.
             setTimeout(function () {
               nextSequence();
             }, 1000);
@@ -74,7 +73,21 @@ function checkAnswer(currentLevel){
         console.log(" Wrong button");
         let sound = new Audio("./sounds/wrong.mp3");
         makeSound(sound);
+        gameOver();
     }
+}
+
+function gameOver(){
+    $(document).addClass("game-over");
+        setTimeout(function(){
+            $(document).removeClass("game-over");
+        }, 200);
+    
+    $("h1").text("Game Over. Press any key to restart");
+    
+    $(document).one("keypress", function(){
+        location.reload();
+    })
 }
 
 console.log(gamePattern);
