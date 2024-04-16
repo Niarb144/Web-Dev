@@ -59,7 +59,7 @@ function makeSound(sound){
 
 function checkAnswer(currentLevel){
     if (gamePattern[currentLevel] === userClickedPattern[currentLevel]){
-        console.log("The two values are " + currentLevel + " " + gamePattern);
+        console.log("The two values are " + gamePattern + " " + userClickedPattern);
 
         if (userClickedPattern.length === gamePattern.length){
 
@@ -71,7 +71,9 @@ function checkAnswer(currentLevel){
           }
     }
     else{
-        alert(" Wrong");
+        console.log(" Wrong button");
+        let sound = new Audio("./sounds/wrong.mp3");
+        makeSound(sound);
     }
 }
 
