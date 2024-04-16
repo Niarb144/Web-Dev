@@ -9,6 +9,8 @@ $(document).one("keypress", function(event){
 });
 
 function nextSequence(){
+    userClickedPattern = [];
+
     level++;
     $("#level-title").text("Level " + (level));
     let  randomNumber = Math.floor(Math.random()*4);
@@ -19,7 +21,6 @@ function nextSequence(){
     buttonAnimation(randomChosenColor);
     
     console.log(randomChosenColor);
-    setInterval(nextSequence, 1000);
 }
 
 // Button Animation
@@ -46,6 +47,8 @@ $(".btn").on("click", function(){
 
     makeSound(buttonType);
     buttonAnimation(buttonType);    
+
+    checkAnswer(userClickedPattern.length-1);
 });
 
 // sound
@@ -55,9 +58,17 @@ function makeSound(sound){
 }
 
 function checkAnswer(currentLevel){
-    if (currentLevel == gamePattern){
-        alert("Success");
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]){
         console.log("The two values are " + currentLevel + " " + gamePattern);
+
+        if (userClickedPattern.length === gamePattern.length){
+
+            //5. Call nextSequence() after a 1000 millisecond delay.
+            setTimeout(function () {
+              nextSequence();
+            }, 1000);
+    
+          }
     }
     else{
         alert(" Wrong");
