@@ -5,11 +5,16 @@ const app = express();
 const port = 3000;
 const blogs = [];
 
-blogs.forEach(blog => { 
-    let blogName = (`${blog.title}`);
-});
-
 app.use(bodyParser.urlencoded({extended:true}));
+
+app.use((req, res, next)=>{
+    blogs.forEach(blog => { 
+        let blogName = (`${blog.title}`);
+        console.log(blogName);
+        return blogName;
+    });
+    next();
+});
 
 app.get("/add", (req,res)=>{
     res.render("index.ejs");
@@ -22,9 +27,9 @@ app.post("/submit", (req,res)=>{
     console.log(blogs);
 });
 
-app.get("/"+ blogName, (req,res)=>{
+app.get("/blogs", (req,res)=>{
     console.log(req.body);
-    res.render("blog.ejs");
+    res.render("blog.ejs",{blogs: blogs});
 });
 
 app.get("/", (req,res)=>{
