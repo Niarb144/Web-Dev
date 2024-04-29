@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nidari's Blog</title>
+</head>
+<body>
+    <!-- Nav -->
+    <a href="/add">Add blog</a>
+    <% blogs.forEach(blog => { %>
+        <a href="/<%=blog.title%>">
+            <%=blog.title%>
+        </a>
+        <!-- console.log(`${blog.title}`); -->
+    <%});%>
+    <div class="blogs_container">
+        
+    </div>
+</body>
+</html>
