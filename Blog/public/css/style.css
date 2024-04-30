@@ -23,3 +23,59 @@
     font-size: 2rem;
     border-radius: 1rem;
 }
+
+.blogs_display a:hover{
+    background-color: #75b2eb;
+    color: #000;
+}
+
+/* Add Blog */
+.blog_entry{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    padding: 8px;
+}
+
+.blog_entry_form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: aquamarine;
+    border-radius: 1rem;
+}
+
+.blog_entry_form input[type=text]{
+    width: 30%;
+    border: none;
+}
+
+.blog_entry_form input[type=submit]{
+    width: 10%;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.blog_entry_form input[type=submit]:hover{
+    background-color: #75b2eb;
+    transition: all ease .4s;
+}
+
+/* Footer */
+.footer_container{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    margin-left: 2rem;
+}
+
+.footer_container p{
+    justify-content: center;
+    text-align: center;
+}
