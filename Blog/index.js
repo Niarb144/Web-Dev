@@ -7,6 +7,8 @@ const blogs = [];
 
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static("public"));
+
 app.use((req, res, next)=>{
     blogs.forEach(blog => { 
         let blogName = (`${blog.title}`);

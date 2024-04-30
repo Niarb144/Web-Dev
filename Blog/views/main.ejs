@@ -1,15 +1,13 @@
 <%- include("partials/header.ejs") %>
 
-    <!-- Nav -->
-    <a href="/add">Add blog</a>
-    <% blogs.forEach(blog => { %>
-        <a href="/blogs">
-            <%=blog.title%>
-        </a>
-        <!-- console.log(`${blog.title}`); -->
-    <%});%>
-    <div class="blogs_container">
-        
+    <div class="blogs_display">
+        <% blogs.forEach(blog => { %>
+            <a href="/blogs">
+                <%=blog.title%>
+            </a>
+            <!-- console.log(`${blog.title}`); -->
+        <%});%>
+        <div class="blogs_container">
     </div>
-</body>
-</html>
+    
+<%- include("partials/footer.ejs") %>
