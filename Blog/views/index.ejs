@@ -1,11 +1,13 @@
 <%- include("partials/header.ejs") %>
 
-    <h1>Welcome to Nidari's world</h1>
-
-    <form action = "/submit" method="post">
-        <input type="text" name="blog_title" id="blog_title" placeholder="Enter Title">
-        <textarea name="blog_content" id="blog_content" cols="80" rows="10" placeholder="Write Here"></textarea>
-        <input type="submit" value="Save">
-    </form> 
+    <div class="blog_entry">
+        <h1><%= page_title %></h1>
+        <form action = "/submit" method="post" class="blog_entry_form">
+            <input type="text" name="blog_title" id="blog_title" placeholder="Enter Title">
+            <textarea name="blog_content" id="blog_content" cols="80" rows="10" placeholder="Write Here"></textarea>
+            <input type="submit" value="Save">
+        </form> 
+    </div>
+    
 
 <%- include("partials/footer.ejs") %>

@@ -19,7 +19,8 @@ app.use((req, res, next)=>{
 });
 
 app.get("/add", (req,res)=>{
-    res.render("index.ejs");
+    let page_title = "Add Blog"
+    res.render("index.ejs", {page_title: page_title});
 });
 
 app.post("/submit", (req,res)=>{
