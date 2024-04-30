@@ -1,0 +1,25 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.blogs_display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.blogs_display a{
+    text-decoration: none;
+    color: #000;
+    background-color: aquamarine;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
