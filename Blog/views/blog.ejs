@@ -1,13 +1,25 @@
 <%- include("partials/header.ejs") %>
+
+<div class="blogs">
     <% blogs.forEach(blog => { %>
-        <h1 href="/<%=blog.title%>">
-            <%=blog.title%>
-        </h1>
+        <div class="blog_title">
+            <h1 href="/<%=blog.title%>">
+                <%=blog.title%>
+            </h1>
+
+            <span>
+                <%= blog.date %>
+                <%= blog.time %>
+            </span>
+        </div>
+        
 
         <p>
             <%=blog.content %>
         </p>
         <!-- console.log(`${blog.title}`); -->
     <%});%>
+</div>
+    
 
 <%- include("partials/footer.ejs") %>
