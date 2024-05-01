@@ -66,6 +66,30 @@
     transition: all ease .4s;
 }
 
+/* Blogs Paage */
+.blogs{
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    background-color:aliceblue;
+    padding: 8px;
+    border-radius: 1rem;
+}
+
+.blogs h1,p{
+    padding: 8px;
+}
+
+.blog_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.blogs span{
+    padding: 10px;
+    float: right;
+}
+
 /* Footer */
 .footer_container{
     display: flex;
