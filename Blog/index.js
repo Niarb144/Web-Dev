@@ -9,14 +9,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static("public"));
 
-app.use((req, res, next)=>{
-    blogs.forEach(blog => { 
-        let blogName = (`${blog.title}`);
-        console.log(blogName);
-        return blogName;
-    });
-    next();
-});
+// app.use((req, res, next)=>{
+//     blogs.forEach(blog => { 
+//         let blogName = (`${blog.title}`);
+//         console.log(blogName);
+//         return blogName;
+//     });
+//     next();
+// });
 
 app.get("/add", (req,res)=>{
     let page_title = "Add Blog"
@@ -24,7 +24,15 @@ app.get("/add", (req,res)=>{
 });
 
 app.post("/submit", (req,res)=>{
-    blogs.push({title: req.body["blog_title"], content: req.body["blog_content"]});
+    const d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth();
+    let year = d.getFullYear();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let time = hour + ":" + minute;
+    let date = day + "/" + (month+1) + "/"+ year;
+    blogs.push({title: req.body["blog_title"], content: req.body["blog_content"], date: date, time:time});
     
     res.render("main.ejs",{blogs: blogs});
     console.log(blogs);
