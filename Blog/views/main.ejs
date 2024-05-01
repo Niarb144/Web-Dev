@@ -2,9 +2,18 @@
 
     <div class="blogs_display">
         <% blogs.forEach(blog => { %>
-            <a href="/blogs">
-                <%=blog.title%>
-            </a>
+            
+            
+                <a href="/blogs">
+                    <%=blog.title%>
+
+                    <span> Created on: 
+                        <%= blog.date %>
+                        <%= blog.time %>
+                    </span>
+                </a>
+    
+            
             <!-- console.log(`${blog.title}`); -->
         <%});%>
     </div>
