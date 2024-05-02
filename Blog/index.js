@@ -9,21 +9,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static("public"));
 
-// app.use((req, res, next)=>{
-//     blogs.forEach(blog => { 
-//         let blogName = (`${blog.title}`);
-//         console.log(blogName);
-//         return blogName;
-//     });
-//     next();
-// });
-
-app.get("/add", (req,res)=>{
-    let page_title = "Add Blog"
-    res.render("index.ejs", {page_title: page_title});
-});
-
-app.post("/submit", (req,res)=>{
+function checkBlog(req, res, next) {
+    let data = req.body;
     const d = new Date();
     let day = d.getDate();
     let month = d.getMonth();
@@ -32,8 +19,25 @@ app.post("/submit", (req,res)=>{
     let minute = d.getMinutes();
     let time = hour + ":" + minute;
     let date = day + "/" + (month+1) + "/"+ year;
-    blogs.push({title: req.body["blog_title"], content: req.body["blog_content"], date: date, time:time});
+    let newBlog = {title: data["blog_title"], content: data["blog_content"], date: date, time:time};
     
+    if (blogs.indexOf(newBlog[newBlog.title]) === -1) {
+        blogs.push(newBlog);
+        console.log("Blog saved successfully");
+    } else {
+        alert("Blog title already used");
+        console.log(`${newBlog[newBlog.title]} already exists in the veggies collection.`);
+    }
+
+    next();
+  };
+
+app.get("/add", (req,res)=>{
+    let page_title = "Add Blog"
+    res.render("index.ejs", {page_title: page_title});
+});
+
+app.post("/submit", checkBlog, (req,res)=>{    
     res.render("main.ejs",{blogs: blogs});
     console.log(blogs);
 });
