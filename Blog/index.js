@@ -21,16 +21,28 @@ function checkBlog(req, res, next) {
     let date = day + "/" + (month+1) + "/"+ year;
     let newBlog = {title: data["blog_title"], content: data["blog_content"], date: date, time:time};
     
-    if (blogs.indexOf(newBlog[newBlog.title]) === -1) {
+    if (blogs.indexOf(newBlog) === -1) {
         blogs.push(newBlog);
-        console.log("Blog saved successfully");
+        // alert(`New blog "${newBlog.title}" saved successfully!`);
+        console.log(`New blog "${newBlog.title}" saved successfully!`);
     } else {
-        alert("Blog title already used");
-        console.log(`${newBlog[newBlog.title]} already exists in the veggies collection.`);
+        console.log(`${newBlog.title} already exists in the veggies collection.`);
     }
 
     next();
   };
+
+function deleteBlog(newBlog, req, res, next){
+    // Index of the item you want to delete
+    // const indexToDelete = this.blogs.indexOf(newBlog);
+
+    const indexToDelete = blogs.findIndex(x => x.title === blog_title);
+
+// Deleting one element at the specified index
+    blogs.splice(indexToDelete, 1);
+    console.log(blogs);
+    next();
+}
 
 app.get("/add", (req,res)=>{
     let page_title = "Add Blog"
@@ -40,6 +52,16 @@ app.get("/add", (req,res)=>{
 app.post("/submit", checkBlog, (req,res)=>{    
     res.render("main.ejs",{blogs: blogs});
     console.log(blogs);
+});
+
+app.get("/edit", (req,res)=>{
+    let page_title = "Edit Blog"
+    res.render("edit.ejs", {blogs: blogs, page_title: page_title});
+});
+
+app.delete("/delete", deleteBlog, (req, res)=>{
+    // res.render("blog.ejs", {blogs: blogs});
+    console.log("Deleted Successfully");
 });
 
 app.get("/blogs", (req,res)=>{
