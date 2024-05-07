@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
-const blogs = [];
+let blogs = [];
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
@@ -32,18 +32,6 @@ function checkBlog(req, res, next) {
     next();
   };
 
-function deleteBlog(newBlog, req, res, next){
-    // Index of the item you want to delete
-    // const indexToDelete = this.blogs.indexOf(newBlog);
-
-    const indexToDelete = blogs.findIndex(x => x.title === blog_title);
-
-// Deleting one element at the specified index
-    blogs.splice(indexToDelete, 1);
-    console.log(blogs);
-    next();
-}
-
 app.get("/add", (req,res)=>{
     let page_title = "Add Blog"
     res.render("index.ejs", {page_title: page_title});
@@ -59,9 +47,10 @@ app.get("/edit", (req,res)=>{
     res.render("edit.ejs", {blogs: blogs, page_title: page_title});
 });
 
-app.get("/delete", deleteBlog, (req, res)=>{
-    res.render("delete.ejs", {blogs: blogs});
-    console.log("Deleted Successfully");
+app.post('/delete', (req, res) => {
+    const titleToDelete = req.body.blog_title;
+    blogs = blogs.filter(blog => blog.title !== titleToDelete);
+    res.redirect('/');
 });
 
 app.get("/blogs/:title", (req,res)=>{

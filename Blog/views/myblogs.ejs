@@ -10,7 +10,10 @@
                 <%= blog.time %>
             </span>
         
-            <a href="/delete">Delete</a>
+            <form action="/delete" method="POST">
+                <input type="hidden" name="blog_title" value="<%= blog.title %>">
+                <button type="submit">Delete Blog</button>
+            </form>
             <a href="/edit">Edit</a>
     
     <!-- console.log(`${blog.title}`); -->
