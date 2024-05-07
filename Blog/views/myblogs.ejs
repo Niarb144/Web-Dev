@@ -1,23 +1,27 @@
 <%- include("partials/header.ejs") %>
-     <% blogs.forEach(blog => { %>
-            
-            
-        
-           <h3><%=blog.title%></h3> 
 
-            <span> Created on: 
-                <%= blog.date %>
-                <%= blog.time %>
-            </span>
-        
-            <form action="/delete" method="POST">
-                <input type="hidden" name="blog_title" value="<%= blog.title %>">
-                <button type="submit">Delete Blog</button>
-            </form>
-            <a href="/edit">Edit</a>
-    
-    <!-- console.log(`${blog.title}`); -->
-<%});%>
+    <div class="myblogs">
+        <% blogs.forEach(blog => { %>
+            
+            
+        <div class="myblogs_details">
+            <h4><%=blog.title%></h3> 
+ 
+             <span> Created on: 
+                 <%= blog.date %>
+                 <%= blog.time %>
+             </span>
+         
+             <form action="/delete" method="POST">
+                 <input type="hidden" name="blog_title" value="<%= blog.title %>">
+                 <button type="submit" id="delete">Delete Blog</button>
+             </form>
+             <a href="/edit/<%= encodeURIComponent(blog.title) %>">Edit Blog</a>
+        </div>    
+     <!-- console.log(`${blog.title}`); -->
+ <%});%>
+    </div>
+     
    
 
 <%- include("partials/footer.ejs") %>

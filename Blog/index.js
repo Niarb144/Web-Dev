@@ -42,9 +42,28 @@ app.post("/submit", checkBlog, (req,res)=>{
     console.log(blogs);
 });
 
-app.get("/edit", (req,res)=>{
-    let page_title = "Edit Blog"
-    res.render("edit.ejs", {blogs: blogs, page_title: page_title});
+app.get('/edit/:title', (req, res) => {
+    let page_title = "Edit Blog";
+    const blog = blogs.find(b => b.title === req.params.title);
+    if (blog) {
+        let counter = 0;
+        counter++;
+        res.render('edit', { blog ,page_title: page_title,counter:counter});
+    } else {
+        res.status(404).send('Blog not found');
+    }
+});
+
+// Route to handle edit form submission
+app.post('/edit', (req, res) => {
+    const { blog_title, blog_content } = req.body;
+    const index = blogs.findIndex(blog => blog.title === blog_title);
+    if (index !== -1) {
+        blogs[index] = { title: blog_title, content: blog_content };
+        res.redirect('/');
+    } else {
+        res.status(404).send('Blog not found');
+    }
 });
 
 app.post('/delete', (req, res) => {
