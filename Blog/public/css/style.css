@@ -110,6 +110,50 @@
     transition: all ease .4s;
 }
 
+.myblogs{
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.myblogs .myblogs_details{
+    display: flex;
+    background-color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myblogs .myblogs_details h4{
+    padding-left: 1rem;
+}
+
+.myblogs .myblogs_details a{
+    padding-right: 1rem;
+}
+
+.myblogs .myblogs_details button{
+    background: none;
+    border: none;
+    color: #2850d6;
+}
+
+.myblogs .myblogs_details button:hover{
+    color: #75b2eb;
+    transition: all ease .4s;
+}
+
+.myblogs .myblogs_details a{
+    text-decoration: none;
+}
+
+.myblogs .myblogs_details a:hover{
+    color: #75b2eb;
+    transition: all ease .4s;
+}
+
 /* Footer */
 .footer_container{
     display: flex;

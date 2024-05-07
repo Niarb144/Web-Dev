@@ -3,11 +3,11 @@
 <div class="blog_entry">
     <h1><%= page_title %></h1>
     <form action = "/submit" method="post" class="blog_entry_form">
-        <% blogs.forEach(blog => { %>
-            <input type="text" name="blog_title" id="blog_title" placeholder="Enter Title" value="<%=blog.title%>">
+        
+            <input type="text" name="blog_title" id="blog_title" placeholder="Enter Title" value="<%=blog.title%>(<%=counter%>)">
             <textarea name="blog_content" id="blog_content" cols="80" rows="10"><%=blog.content %></textarea>
             <!-- console.log(`${blog.title}`); -->
-        <%});%>
+        
         
         <input type="submit" value="Save">
     </form> 
