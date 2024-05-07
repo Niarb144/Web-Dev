@@ -6,7 +6,7 @@ const port = 3000;
 const blogs = [];
 
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 function checkBlog(req, res, next) {
@@ -59,14 +59,25 @@ app.get("/edit", (req,res)=>{
     res.render("edit.ejs", {blogs: blogs, page_title: page_title});
 });
 
-app.delete("/delete", deleteBlog, (req, res)=>{
-    // res.render("blog.ejs", {blogs: blogs});
+app.get("/delete", deleteBlog, (req, res)=>{
+    res.render("delete.ejs", {blogs: blogs});
     console.log("Deleted Successfully");
 });
 
-app.get("/blogs", (req,res)=>{
+app.get("/blogs/:title", (req,res)=>{
     console.log(req.body);
-    res.render("blog.ejs",{blogs: blogs});
+    const blog = blogs.find(b => b.title === req.params.title);
+
+    if (blog){
+        res.render('blog', { blog });
+    }
+    else{
+        res.status(404).send('Blog Not Found');
+    }
+});
+
+app.get("/myblogs", (req,res)=>{
+    res.render("myblogs.ejs", {blogs:blogs});
 });
 
 app.get("/", (req,res)=>{
