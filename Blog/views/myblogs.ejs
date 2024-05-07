@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+     <% blogs.forEach(blog => { %>
+            
+            
+        
+           <h3><%=blog.title%></h3> 
+
+            <span> Created on: 
+                <%= blog.date %>
+                <%= blog.time %>
+            </span>
+        
+            <a href="/delete">Delete</a>
+            <a href="/edit">Edit</a>
+    
+    <!-- console.log(`${blog.title}`); -->
+<%});%>
+   
+
+<%- include("partials/footer.ejs") %>

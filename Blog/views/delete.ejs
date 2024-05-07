@@ -1,0 +1,8 @@
+<%- include("partials/header.ejs") %>
+<%= locals.blog_title %>
+<%
+    const indexToDelete = blogs.findIndex(x => x.title === blog_title);
+    blogs.splice(indexToDelete, 1);
+%>
+
+<%- include("partials/footer.ejs") %>

@@ -1,7 +1,8 @@
 <%- include("partials/header.ejs") %>
 
 <div class="blogs">
-    <% blogs.forEach(blog => { %>
+    
+    
         <div class="blog_title">
             <h1 href="/<%=blog.title%>">
                 <%=blog.title%>
@@ -18,10 +19,9 @@
             <%=blog.content %>
         </p>
 
-        <a href="/delete">Delete</a>
-        <a href="/edit">Edit</a>
+        
         <!-- console.log(`${blog.title}`); -->
-    <%});%>
+    
 </div>
     
 
